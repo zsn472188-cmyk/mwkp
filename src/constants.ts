@@ -1,0 +1,9 @@
+export const DEFAULT_EXPRESSION = 'sin(sqrt(x^2+y^2))'
+export const DEFAULT_RANGE = 5
+export const MIN_RANGE = 1
+export const MAX_RANGE = 20
+export const DEFAULT_RESOLUTION = 28
+export const LOW_RESOLUTION = 20
+export const MEDIUM_RESOLUTION = 28
+export const HIGH_RESOLUTION = 36
+export const SURFACE_SEGMENTS = 96
