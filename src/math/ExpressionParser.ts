@@ -1,3 +1,5 @@
+import { normalizeMathExpression } from '../input/FormulaFormatter'
+
 export type SurfaceEvaluator = (x: number, y: number) => number
 export type ImplicitEvaluator = (x: number, y: number, z: number) => number
 
@@ -61,7 +63,7 @@ export function compileExpression(expression: string): SurfaceEvaluator {
  * 如果用户输入 left=right，最终求值为 left-right。
  */
 export function compileImplicitExpression(expression: string): ImplicitEvaluator {
-  const normalized = normalizeExpression(expression)
+  const normalized = normalizeExpression(normalizeMathExpression(expression))
   const equalsCount = countCharacter(normalized, '=')
 
   if (equalsCount > 1) {
@@ -88,7 +90,7 @@ export function compileImplicitExpression(expression: string): ImplicitEvaluator
 }
 
 function compileAst(expression: string, allowedVariables: VariableName[]): AstNode {
-  const source = normalizeExpression(expression)
+  const source = normalizeExpression(normalizeMathExpression(expression))
   const tokens = tokenize(source)
   const options = { allowedVariables }
   validateNoImplicitMultiplication(tokens, options)

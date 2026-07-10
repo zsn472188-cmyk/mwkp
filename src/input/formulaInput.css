@@ -1,0 +1,159 @@
+.math-keyboard-open .app-shell {
+  padding-bottom: var(--math-keyboard-height, 300px);
+}
+
+.formula-display {
+  width: 100%;
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  white-space: nowrap;
+  border: 1px solid rgba(156, 190, 236, 0.28);
+  border-radius: 10px;
+  padding: 0 12px;
+  color: #eef6ff;
+  background: rgba(15, 27, 47, 0.9);
+  outline: none;
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.formula-display:focus {
+  border-color: #5db7ff;
+  box-shadow: 0 0 0 3px rgba(93, 183, 255, 0.15);
+}
+
+.formula-display--empty::before {
+  content: attr(data-placeholder);
+  color: #6f84a6;
+  pointer-events: none;
+}
+
+.formula-panel.math-keyboard {
+  position: fixed;
+  left: 50%;
+  right: auto;
+  bottom: max(10px, env(safe-area-inset-bottom));
+  z-index: 1000;
+  width: min(100% - 16px, 760px);
+  max-height: min(56dvh, 420px);
+  display: grid;
+  gap: 10px;
+  padding: 10px;
+  color: #172033;
+  background: rgba(248, 251, 255, 0.96);
+  border: 1px solid rgba(112, 137, 171, 0.2);
+  border-radius: 22px;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.35);
+  transform: translateX(-50%);
+  backdrop-filter: blur(18px);
+  touch-action: manipulation;
+  user-select: none;
+}
+
+.math-keyboard[hidden] {
+  display: none;
+}
+
+.math-keyboard__handle {
+  width: 42px;
+  height: 5px;
+  margin: 0 auto 2px;
+  border-radius: 999px;
+  background: #c6d2e1;
+}
+
+.formula-edit-input {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid #d8e3f0;
+  border-radius: 14px;
+  padding: 0 12px;
+  color: #0e1828;
+  background: #ffffff;
+  outline: none;
+  font:
+    17px "SFMono-Regular", Consolas, "Liberation Mono", "Microsoft YaHei",
+    monospace;
+}
+
+.formula-edit-input:focus {
+  border-color: #2f7dff;
+  box-shadow: 0 0 0 3px rgba(47, 125, 255, 0.15);
+}
+
+.math-keyboard__tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 4px;
+  border-radius: 14px;
+  background: #eef3f9;
+}
+
+.math-keyboard__tabs button,
+.math-keyboard__key {
+  min-height: 42px;
+  border: 0;
+  border-radius: 12px;
+  color: #1d2b42;
+  background: #e9f0f8;
+  font-weight: 700;
+  box-shadow: inset 0 -1px 0 rgba(57, 75, 103, 0.08);
+}
+
+.math-keyboard__tabs button.active {
+  color: #ffffff;
+  background: #2f7dff;
+}
+
+.math-keyboard__grid {
+  display: grid;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  gap: 7px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.math-keyboard__key {
+  padding: 0 4px;
+  font-size: 15px;
+}
+
+.math-keyboard__key--operator {
+  color: #08223a;
+  background: #d8ecff;
+}
+
+.math-keyboard__key--control {
+  color: #253550;
+  background: #dce5f0;
+}
+
+.math-keyboard__key--confirm {
+  color: #ffffff;
+  background: linear-gradient(135deg, #2f7dff, #15b86a);
+}
+
+@media (max-width: 620px) {
+  .formula-panel.math-keyboard {
+    bottom: 0;
+    width: 100%;
+    max-height: 54dvh;
+    border-right: 0;
+    border-bottom: 0;
+    border-left: 0;
+    border-radius: 22px 22px 0 0;
+  }
+
+  .math-keyboard__grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .math-keyboard__key,
+  .math-keyboard__tabs button {
+    min-height: 44px;
+  }
+}

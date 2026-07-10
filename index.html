@@ -16,15 +16,19 @@
         </div>
 
         <div class="controls">
-          <label class="field">
+          <label class="field formula-field">
             <span>函数</span>
-            <input
-              id="formula-input"
-              type="text"
-              autocomplete="off"
-              spellcheck="false"
-              placeholder="例如：x^2+y^2、z=sin(x)*cos(y)、x^2+y^2+z^2=9"
-            />
+            <math-field
+              id="formula-field"
+              aria-label="函数"
+              default-mode="math"
+              letter-shape-style="tex"
+              math-virtual-keyboard-policy="auto"
+              smart-fence="on"
+              smart-mode="on"
+              smart-superscript="on"
+              placeholder="例如：x^2+y^2 或 x^2+y^2+z^2=9"
+            >\sin\left(\sqrt{x^2+y^2}\right)</math-field>
           </label>
 
           <label class="field">

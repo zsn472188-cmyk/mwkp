@@ -1,3 +1,5 @@
+import { normalizeMathExpression } from '../input/FormulaFormatter'
+
 export type FormulaMode = 'explicit' | 'implicit'
 
 export interface ClassifiedFormula {
@@ -12,7 +14,7 @@ export interface ClassifiedFormula {
  * - 含 z 或普通等式：隐函数 F(x,y,z)=0
  */
 export function classifyFormula(input: string): ClassifiedFormula {
-  const normalized = input.trim().toLowerCase()
+  const normalized = normalizeMathExpression(input).trim().toLowerCase()
 
   if (!normalized) {
     throw new Error('公式不能为空')
